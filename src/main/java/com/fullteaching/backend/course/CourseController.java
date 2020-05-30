@@ -69,7 +69,7 @@ public class CourseController {
 		}
 		Set<Long> s = new HashSet<>();
 		s.add(id_i);
-		Collection<User> users = userRepository.findAll(s);
+		Collection<User> users = userRepository.findAllById(s);
 		Collection<Course> courses = new HashSet<>();
 		courses = courseRepository.findByAttenders(users);
 		return new ResponseEntity<>(courses, HttpStatus.OK);
@@ -92,7 +92,7 @@ public class CourseController {
 			log.error("Course ID '{}' is not of type Long", id);
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		Course course = courseRepository.findOne(id_i);
+		Course course = courseRepository.findById(id_i).orElse(null);
 		return new ResponseEntity<>(course ,HttpStatus.OK);
 	}
 	
@@ -118,7 +118,7 @@ public class CourseController {
 		courseRepository.save(course);
 		courseRepository.flush();
 		
-		course = courseRepository.findOne(course.getId());
+		course = courseRepository.findById(course.getId()).orElse(null);
 		
 		log.info("New course succesfully added: {}", course.toString());
 		
@@ -135,7 +135,7 @@ public class CourseController {
 			return authorized;
 		};
 
-		Course c = courseRepository.findOne(course.getId());
+		Course c = courseRepository.findById(course.getId()).orElse(null);
 		
 		ResponseEntity<Object> teacherAuthorized = authorizationService.checkAuthorization(c, c.getTeacher());
 		if (teacherAuthorized != null) { // If the user is not the teacher of the course
@@ -178,7 +178,7 @@ public class CourseController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		
-		Course c = courseRepository.findOne(id_course);
+		Course c = courseRepository.findById(id_course).orElse(null);
 		
 		ResponseEntity<Object> teacherAuthorized = authorizationService.checkAuthorization(c, c.getTeacher());
 		if (teacherAuthorized != null) { // If the user is not the teacher of the course
@@ -194,7 +194,7 @@ public class CourseController {
 			for(User u: users){
 				u.getCourses().remove(c);
 			}
-			userRepository.save(users);
+			userRepository.saveAll(users);
 			c.getAttenders().clear();
 			
 			courseRepository.delete(c);
@@ -228,7 +228,7 @@ public class CourseController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
-		Course c = courseRepository.findOne(id_course);
+		Course c = courseRepository.findById(id_course).orElse(null);
 		
 		ResponseEntity<Object> teacherAuthorized = authorizationService.checkAuthorization(c, c.getTeacher());
 		if (teacherAuthorized != null) { // If the user is not the teacher of the course
@@ -272,7 +272,7 @@ public class CourseController {
 			}
 			
 			//Saving the attenders (all of them, just in case a field of the bidirectional relationship is missing in a Course or a User)
-			userRepository.save(newPossibleAttenders);	
+			userRepository.saveAll(newPossibleAttenders);	
 			//Saving the modified course
 			courseRepository.save(c);
 			
@@ -304,7 +304,7 @@ public class CourseController {
 			return authorized;
 		};
 
-		Course c = courseRepository.findOne(course.getId());
+		Course c = courseRepository.findById(course.getId()).orElse(null);
 		
 		ResponseEntity<Object> teacherAuthorized = authorizationService.checkAuthorization(c, c.getTeacher());
 		if (teacherAuthorized != null) { // If the user is not the teacher of the course
@@ -324,7 +324,7 @@ public class CourseController {
 				}
 			}
 			
-			userRepository.save(courseAttenders);
+			userRepository.saveAll(courseAttenders);
 			
 			//Modifying the course attenders
 			c.setAttenders(course.getAttenders());
