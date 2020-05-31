@@ -34,7 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		configureUrlAuthorization(http);
 
 		// Use Http Basic Authentication
-		http.httpBasic();
+		//http.httpBasic();
+		
+		// Use OAuth2 Authentication
+		http.oauth2Login();
 
 		// Do not redirect when logout
 		http.logout().logoutSuccessHandler((rq, rs, a) -> {
