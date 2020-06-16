@@ -87,6 +87,7 @@ export class LoginModalComponent {
     }
   }
 
+
   logIn(user: string, pass: string) {
     this.authenticationService.logIn(user, pass).subscribe(
       result => {

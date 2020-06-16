@@ -1,12 +1,18 @@
 package com.fullteaching.backend.security;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpSession;
 
+import org.jvnet.staxex.util.XMLStreamReaderToXMLStreamWriter.Breakpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,8 +39,19 @@ public class LoginController {
 		log.info("Logging in ...");
 
 		if (!userComponent.isLoggedUser()) {
-			log.info("Not user logged");
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString().equals("anonymousUser")){
+				DefaultOidcUser p = (DefaultOidcUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+				User u = googleToUser(p);
+				userComponent.setLoggedUser(u);
+				User loggedUser = userComponent.getLoggedUser();
+				log.info("Logged as {}", loggedUser.getName());
+				return new ResponseEntity<>(loggedUser, HttpStatus.OK);
+			}
+			else{
+				log.info("Not user logged");
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+				
+			}	
 		} else {
 			User loggedUser = userComponent.getLoggedUser();
 			log.info("Logged as {}", loggedUser.getName());
@@ -56,6 +73,12 @@ public class LoginController {
 			log.info("Logged out user {}", name);
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		}
+	}
+
+	private User googleToUser(DefaultOidcUser g){
+		User u = new User(g.getEmail(), g.getEmail(), g.getName(), g.getPicture(),"ROLE_STUDENT");
+		return u;
+
 	}
 
 }
