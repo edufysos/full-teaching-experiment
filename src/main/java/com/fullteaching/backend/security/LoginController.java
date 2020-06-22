@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,7 +41,7 @@ public class LoginController {
 
 		if (!userComponent.isLoggedUser()) {
 			if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString().equals("anonymousUser")){
-				DefaultOidcUser p = (DefaultOidcUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+				DefaultOAuth2User p = (DefaultOAuth2User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 				User u = googleToUser(p);
 				userComponent.setLoggedUser(u);
 				User loggedUser = userComponent.getLoggedUser();
@@ -75,8 +76,12 @@ public class LoginController {
 		}
 	}
 
-	private User googleToUser(DefaultOidcUser g){
-		User u = new User(g.getEmail(), g.getEmail(), g.getName(), g.getPicture(),"ROLE_STUDENT");
+	private User googleToUser(DefaultOAuth2User g){
+		String name = (String) g.getAttributes().get("name");
+		String email = (String) g.getAttributes().get("email");
+		String picture = (String) g.getAttributes().get("picture");
+		
+		User u = new User(email, email, name, picture,"ROLE_TEACHER");
 		return u;
 
 	}
