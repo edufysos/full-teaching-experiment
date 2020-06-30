@@ -18,6 +18,7 @@ import com.fullteaching.backend.calendar.CalendarAPI;
 import com.fullteaching.backend.course.Course;
 import com.fullteaching.backend.course.CourseRepository;
 import com.fullteaching.backend.security.AuthorizationService;
+import com.fullteaching.backend.user.UserComponent;
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventDateTime;
@@ -69,16 +70,7 @@ public class SessionController {
 			// Saving the modified course: Cascade relationship between course and sessions
 			// will add the new session to SessionRepository
 			courseRepository.save(course);
-
-			try {
-				CalendarAPI.createEvent(session);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (GeneralSecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 			log.info("New session succesfully added: {}", session.toString());
 			
 			//Entire course is returned

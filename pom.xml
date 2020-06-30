@@ -160,8 +160,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>21.0</version>
-			<scope>test</scope>
+			<version>29.0-jre</version>
 		</dependency>
 
 		<dependency>
@@ -176,6 +175,44 @@
 			<artifactId>google-api-services-calendar</artifactId>
 			<version>v3-rev224-1.22.0</version>
 		</dependency>
+
+<!-- 		<dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client-jetty</artifactId>
+			<version>1.23.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency> -->
+		  
+		<dependency>
+			<groupId>com.google.http-client</groupId>
+			<artifactId>google-http-client</artifactId>
+			<version>1.35.0</version>
+			<exclusions>
+				<exclusion>
+				  <artifactId>javax.servlet</artifactId>
+				  <groupId>servlet-api</groupId>
+				</exclusion>
+			  </exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>1.20.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava-jdk5</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		
 	
 
 	</dependencies>

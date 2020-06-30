@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fullteaching.backend.user.User;
 import com.fullteaching.backend.user.UserComponent;
+import com.fullteaching.backend.user.UserRepository;
+import com.google.api.client.auth.oauth2.Credential;
 
 /**
  * This class is used to provide REST endpoints to logIn and logOut to the
@@ -34,8 +38,11 @@ public class LoginController {
 	@Autowired
 	private UserComponent userComponent;
 
+	@Autowired
+	private UserRepository userRepository;
+
 	@RequestMapping("/api-logIn")
-	public ResponseEntity<User> logIn() {
+	public ResponseEntity<User> logIn(@RegisteredOAuth2AuthorizedClient("google") OAuth2AuthorizedClient authorizedClient) {
 		
 		log.info("Logging in ...");
 
@@ -44,6 +51,7 @@ public class LoginController {
 				DefaultOAuth2User p = (DefaultOAuth2User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 				User u = googleToUser(p);
 				userComponent.setLoggedUser(u);
+				userComponent.setAuthorizedClient(authorizedClient);
 				User loggedUser = userComponent.getLoggedUser();
 				log.info("Logged as {}", loggedUser.getName());
 				return new ResponseEntity<>(loggedUser, HttpStatus.OK);
@@ -80,10 +88,15 @@ public class LoginController {
 		String name = (String) g.getAttributes().get("name");
 		String email = (String) g.getAttributes().get("email");
 		String picture = (String) g.getAttributes().get("picture");
-		
-		User u = new User(email, email, name, picture,"ROLE_TEACHER");
+		User u = userRepository.findByName(email);
+		if(userRepository.findByName(email) == null){
+			u = new User(email, email, name, picture,"ROLE_STUDENT");
+			userRepository.save(u);
+		}
 		return u;
 
 	}
+
+
 
 }

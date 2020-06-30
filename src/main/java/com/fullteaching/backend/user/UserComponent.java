@@ -2,6 +2,7 @@ package com.fullteaching.backend.user;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -24,6 +25,8 @@ public class UserComponent {
 
 	private User user;
 
+	private OAuth2AuthorizedClient authorizedClient;
+
 	public User getLoggedUser() {
 		return user;
 	}
@@ -34,6 +37,14 @@ public class UserComponent {
 
 	public boolean isLoggedUser() {
 		return this.user != null;
+	}
+
+	public OAuth2AuthorizedClient getAuthorizedClient() {
+		return authorizedClient;
+	}
+
+	public void setAuthorizedClient(OAuth2AuthorizedClient authorizedClient) {
+		this.authorizedClient = authorizedClient;
 	}
 
 }
