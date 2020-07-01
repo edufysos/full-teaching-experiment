@@ -10,6 +10,7 @@ import { User } from '../classes/user';
 export class AuthenticationService {
 
   private urlLogIn = '/api-logIn';
+  private urlGoogleLogIn = '/api-googleLogIn'
   private urlLogOut = '/api-logOut';
 
   public token: string;
@@ -83,6 +84,8 @@ export class AuthenticationService {
 
   reqIsLogged(): Promise<any> {
 
+    let errorStatus = 0;
+
     return new Promise((resolve, reject) => {
 
       console.log("Checking if user is logged");
@@ -92,22 +95,31 @@ export class AuthenticationService {
       });
       let options = new RequestOptions({ headers });
 
-      this.http.get(this.urlLogIn, options).subscribe(
+      this.http.get(this.urlGoogleLogIn, options).subscribe(
         response => { this.processLogInResponse(response); resolve() },
         error => {
-          let msg = '';
-          if (error.status != 401) {
-            msg = "Error when asking if logged: " + JSON.stringify(error);
-            console.error(msg);
-            this.logOut();
-          } else {
-            msg = "User is not logged in";
-            console.warn(msg);
-            this.router.navigate(['']);
-          }
-          reject(msg);
+          errorStatus = error.status;
         }
-      );
+      )
+
+      if (errorStatus == 100){
+        this.http.get(this.urlLogIn, options).subscribe(
+          response => { this.processLogInResponse(response); resolve() },
+          error => {
+            let msg = '';
+            if (error.status != 401) {
+              msg = "Error when asking if logged: " + JSON.stringify(error);
+              console.error(msg);
+              this.logOut();
+            } else {
+              msg = "User is not logged in";
+              console.warn(msg);
+              this.router.navigate(['']);
+            }
+            reject(msg);
+          }
+        );
+      }
     });
   }
 

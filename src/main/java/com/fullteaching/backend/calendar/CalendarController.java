@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("/api-calendar")
 public class CalendarController {
 
     private static final Logger log = LoggerFactory.getLogger(CalendarController.class);
@@ -28,12 +27,12 @@ public class CalendarController {
     @Autowired
     UserComponent userComponent;
 
-    @PostMapping("/sync")
+    @RequestMapping(value="/api-calendar", method = RequestMethod.POST)
     public ResponseEntity<Object> syncCalendar(@RequestBody List<Session> sessions) {
         String accessToken = userComponent.getAuthorizedClient().getAccessToken().getTokenValue();
-
         try {
             CalendarAPI.syncCalendar(sessions, accessToken);
+            log.info("Your calendar was synced!");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             log.info("Your calendar could not be synced due to", e.getCause());

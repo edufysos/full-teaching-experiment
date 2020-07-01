@@ -125,22 +125,24 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__services_animation_service__ = __webpack_require__("../../../../../src/app/services/animation.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__services_video_session_service__ = __webpack_require__("../../../../../src/app/services/video-session.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35_angular_calendar__ = __webpack_require__("../../../../angular-calendar/dist/esm/src/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_calendar_calendar_component__ = __webpack_require__("../../../../../src/app/components/calendar/calendar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37_time_ago_pipe__ = __webpack_require__("../../../../time-ago-pipe/time-ago-pipe.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37_time_ago_pipe___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_37_time_ago_pipe__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38_ng2_dragula_ng2_dragula__ = __webpack_require__("../../../../ng2-dragula/ng2-dragula.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38_ng2_dragula_ng2_dragula___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_38_ng2_dragula_ng2_dragula__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39_primeng_components_editor_editor__ = __webpack_require__("../../../../primeng/components/editor/editor.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39_primeng_components_editor_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_39_primeng_components_editor_editor__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40_angular2_recaptcha__ = __webpack_require__("../../../../angular2-recaptcha/angular2-recaptcha.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40_angular2_recaptcha___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_40_angular2_recaptcha__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__services_calendar_service__ = __webpack_require__("../../../../../src/app/services/calendar.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_angular_calendar__ = __webpack_require__("../../../../angular-calendar/dist/esm/src/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_calendar_calendar_component__ = __webpack_require__("../../../../../src/app/components/calendar/calendar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38_time_ago_pipe__ = __webpack_require__("../../../../time-ago-pipe/time-ago-pipe.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38_time_ago_pipe___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_38_time_ago_pipe__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39_ng2_dragula_ng2_dragula__ = __webpack_require__("../../../../ng2-dragula/ng2-dragula.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39_ng2_dragula_ng2_dragula___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_39_ng2_dragula_ng2_dragula__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40_primeng_components_editor_editor__ = __webpack_require__("../../../../primeng/components/editor/editor.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40_primeng_components_editor_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_40_primeng_components_editor_editor__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41_angular2_recaptcha__ = __webpack_require__("../../../../angular2-recaptcha/angular2-recaptcha.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41_angular2_recaptcha___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_41_angular2_recaptcha__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -195,10 +197,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5_angular2_materialize__["MaterializeModule"],
                 __WEBPACK_IMPORTED_MODULE_7__angular_material__["a" /* MaterialModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_4__app_routing__["a" /* routing */],
-                __WEBPACK_IMPORTED_MODULE_35_angular_calendar__["CalendarModule"].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_38_ng2_dragula_ng2_dragula__["DragulaModule"],
-                __WEBPACK_IMPORTED_MODULE_39_primeng_components_editor_editor__["EditorModule"],
-                __WEBPACK_IMPORTED_MODULE_40_angular2_recaptcha__["ReCaptchaModule"],
+                __WEBPACK_IMPORTED_MODULE_36_angular_calendar__["CalendarModule"].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_39_ng2_dragula_ng2_dragula__["DragulaModule"],
+                __WEBPACK_IMPORTED_MODULE_40_primeng_components_editor_editor__["EditorModule"],
+                __WEBPACK_IMPORTED_MODULE_41_angular2_recaptcha__["ReCaptchaModule"],
             ],
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */],
@@ -212,8 +214,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_17__components_error_message_error_message_component__["a" /* ErrorMessageComponent */],
                 __WEBPACK_IMPORTED_MODULE_18__components_comment_comment_component__["a" /* CommentComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__components_file_group_file_group_component__["a" /* FileGroupComponent */],
-                __WEBPACK_IMPORTED_MODULE_36__components_calendar_calendar_component__["a" /* CalendarComponent */],
-                __WEBPACK_IMPORTED_MODULE_37_time_ago_pipe__["TimeAgoPipe"],
+                __WEBPACK_IMPORTED_MODULE_37__components_calendar_calendar_component__["a" /* CalendarComponent */],
+                __WEBPACK_IMPORTED_MODULE_38_time_ago_pipe__["TimeAgoPipe"],
                 __WEBPACK_IMPORTED_MODULE_6_ng2_file_upload__["FileSelectDirective"],
                 __WEBPACK_IMPORTED_MODULE_6_ng2_file_upload__["FileDropDirective"],
                 __WEBPACK_IMPORTED_MODULE_20__components_video_session_video_session_component__["a" /* VideoSessionComponent */],
@@ -234,6 +236,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_32__services_user_service__["a" /* UserService */],
                 __WEBPACK_IMPORTED_MODULE_33__services_animation_service__["a" /* AnimationService */],
                 __WEBPACK_IMPORTED_MODULE_34__services_video_session_service__["a" /* VideoSessionService */],
+                __WEBPACK_IMPORTED_MODULE_35__services_calendar_service__["a" /* CalendarService */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
@@ -504,7 +507,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/calendar/calendar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"calendar-container\">\n    <div class=\"row no-margin my-calendar-header\">\n      <div class=\"col l7 m7 s7 no-padding-lateral\">\n        <h3 class=\"calendar-title\">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>\n      </div>\n      <div *ngIf=\"!loadingSessions\" class=\"col l5 m5 s5 no-padding-lateral\">\n        <div class=\"calendar-icon-group\">\n          <i class=\"material-icons no-padding-left\" (click)=\"decrement()\">chevron_left</i>\n          <i class=\"material-icons\" (click)=\"today()\">today</i>\n          <i class=\"material-icons\" (click)=\"increment()\">chevron_right</i>\n        </div>\n      </div>\n    </div>\n    <div *ngIf=\"!loadingSessions\">\n      <mwl-calendar-month-view [viewDate]=\"viewDate\" [events]=\"events\" [activeDayIsOpen]=\"activeDayIsOpen\" (dayClicked)=\"dayClicked($event.day)\"></mwl-calendar-month-view>\n    </div>\n    <div *ngIf=\"loadingSessions\" class=\"loader-calendar\"></div>\n</div>\n"
+module.exports = "<div class=\"calendar-container\">\n    <div class=\"row no-margin my-calendar-header\">\n      <div class=\"col l7 m7 s7 no-padding-lateral\">\n        <h3 class=\"calendar-title\">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>\n      </div>\n      <div *ngIf=\"!loadingSessions\" class=\"col l5 m5 s5 no-padding-lateral\">\n        <div class=\"calendar-icon-group\">\n          <i class=\"material-icons no-padding-left\" (click)=\"decrement()\">chevron_left</i>\n          <i class=\"material-icons\" (click)=\"today()\">today</i>\n          <i class=\"material-icons\" (click)=\"increment()\">chevron_right</i>\n        </div>\n      </div>\n    </div>\n    <div *ngIf=\"!loadingSessions\">\n      <mwl-calendar-month-view [viewDate]=\"viewDate\" [events]=\"events\" [activeDayIsOpen]=\"activeDayIsOpen\" (dayClicked)=\"dayClicked($event.day)\"></mwl-calendar-month-view>\n    </div>\n    <div *ngIf=\"loadingSessions\" class=\"loader-calendar\"></div>\n    <div *ngIf=\"!synced\">\n      <button mat-flat-button color=\"accent\" aria-label=\"Sync your calendar with google agenda\" (click)=\"syncCalendar()\">\n        {{syncText}}\n      </button>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -518,6 +521,7 @@ module.exports = "<div class=\"calendar-container\">\n    <div class=\"row no-ma
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_authentication_service__ = __webpack_require__("../../../../../src/app/services/authentication.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_date_fns__ = __webpack_require__("../../../../date-fns/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_date_fns___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_date_fns__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_calendar_service__ = __webpack_require__("../../../../../src/app/services/calendar.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -527,6 +531,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -552,14 +557,17 @@ var MyCalendarEvent = /** @class */ (function () {
     return MyCalendarEvent;
 }());
 var CalendarComponent = /** @class */ (function () {
-    function CalendarComponent(authenticationService, router) {
+    function CalendarComponent(authenticationService, router, calendarService) {
         this.authenticationService = authenticationService;
         this.router = router;
+        this.calendarService = calendarService;
         this.view = 'month';
         this.viewDate = new Date();
         this.events = [];
         this.activeDayIsOpen = false;
         this.loadingSessions = true;
+        this.synced = false;
+        this.syncText = "Sync your calendar to google agenda";
     }
     CalendarComponent.prototype.ngOnInit = function () {
         this.getAllSessions();
@@ -639,16 +647,27 @@ var CalendarComponent = /** @class */ (function () {
         }
         this.loadingSessions = false;
     };
+    CalendarComponent.prototype.syncCalendar = function () {
+        var sessions = [];
+        this.events.forEach(function (event) {
+            var aux = event.session;
+            aux.course = null;
+            sessions.push(aux);
+        });
+        this.calendarService.sync(sessions).subscribe();
+        this.synced = true;
+        this.syncText = "Your calendar is already synced";
+    };
     CalendarComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'calendar-app',
             template: __webpack_require__("../../../../../src/app/components/calendar/calendar.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/calendar/calendar.component.css")],
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_authentication_service__["a" /* AuthenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_authentication_service__["a" /* AuthenticationService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_authentication_service__["a" /* AuthenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_authentication_service__["a" /* AuthenticationService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_calendar_service__["a" /* CalendarService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_calendar_service__["a" /* CalendarService */]) === "function" && _c || Object])
     ], CalendarComponent);
     return CalendarComponent;
-    var _a, _b;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=/home/goncazevedo/Programs/full-teaching-experiment/src/main/angular/src/calendar.component.js.map
@@ -3613,6 +3632,7 @@ var AuthenticationService = /** @class */ (function () {
         this.http = http;
         this.router = router;
         this.urlLogIn = '/api-logIn';
+        this.urlGoogleLogIn = '/api-googleLogIn';
         this.urlLogOut = '/api-logOut';
         //this.reqIsLogged().catch((e) => { });
     }
@@ -3667,26 +3687,32 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.reqIsLogged = function () {
         var _this = this;
+        var errorStatus = 0;
         return new Promise(function (resolve, reject) {
             console.log("Checking if user is logged");
             var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
                 'X-Requested-With': 'XMLHttpRequest'
             });
             var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-            _this.http.get(_this.urlLogIn, options).subscribe(function (response) { _this.processLogInResponse(response); resolve(); }, function (error) {
-                var msg = '';
-                if (error.status != 401) {
-                    msg = "Error when asking if logged: " + JSON.stringify(error);
-                    console.error(msg);
-                    _this.logOut();
-                }
-                else {
-                    msg = "User is not logged in";
-                    console.warn(msg);
-                    _this.router.navigate(['']);
-                }
-                reject(msg);
+            _this.http.get(_this.urlGoogleLogIn, options).subscribe(function (response) { _this.processLogInResponse(response); resolve(); }, function (error) {
+                errorStatus = error.status;
             });
+            if (errorStatus == 100) {
+                _this.http.get(_this.urlLogIn, options).subscribe(function (response) { _this.processLogInResponse(response); resolve(); }, function (error) {
+                    var msg = '';
+                    if (error.status != 401) {
+                        msg = "Error when asking if logged: " + JSON.stringify(error);
+                        console.error(msg);
+                        _this.logOut();
+                    }
+                    else {
+                        msg = "User is not logged in";
+                        console.warn(msg);
+                        _this.router.navigate(['']);
+                    }
+                    reject(msg);
+                });
+            }
         });
     };
     AuthenticationService.prototype.checkCredentials = function () {
@@ -3735,6 +3761,65 @@ function utf8_to_b64(str) {
     }));
 }
 //# sourceMappingURL=/home/goncazevedo/Programs/full-teaching-experiment/src/main/angular/src/authentication.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/calendar.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CalendarService = /** @class */ (function () {
+    function CalendarService(http) {
+        this.http = http;
+        this.urlCalendar = "/api-calendar";
+    }
+    //Synchronize all sessions 
+    CalendarService.prototype.sync = function (sessions) {
+        var _this = this;
+        var body = JSON.stringify(sessions);
+        console.log(body);
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(this.urlCalendar, body, options)
+            .map(function (response) {
+            console.log("Sync calendar SUCESS. Response: ", response.json());
+            return "Synced successfully";
+        })
+            .catch(function (error) { return _this.handleError("Calendar sync FAIL. Response: ", error); });
+    };
+    CalendarService.prototype.handleError = function (message, error) {
+        console.error(message, error);
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw("Server error (" + error.status + "): " + error.text());
+    };
+    CalendarService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    ], CalendarService);
+    return CalendarService;
+    var _a;
+}());
+
+//# sourceMappingURL=/home/goncazevedo/Programs/full-teaching-experiment/src/main/angular/src/calendar.service.js.map
 
 /***/ }),
 

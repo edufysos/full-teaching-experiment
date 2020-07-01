@@ -42,25 +42,14 @@ public class LoginController {
 	private UserRepository userRepository;
 
 	@RequestMapping("/api-logIn")
-	public ResponseEntity<User> logIn(@RegisteredOAuth2AuthorizedClient("google") OAuth2AuthorizedClient authorizedClient) {
+	public ResponseEntity<User> logIn() {
 		
 		log.info("Logging in ...");
 
 		if (!userComponent.isLoggedUser()) {
-			if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString().equals("anonymousUser")){
-				DefaultOAuth2User p = (DefaultOAuth2User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-				User u = googleToUser(p);
-				userComponent.setLoggedUser(u);
-				userComponent.setAuthorizedClient(authorizedClient);
-				User loggedUser = userComponent.getLoggedUser();
-				log.info("Logged as {}", loggedUser.getName());
-				return new ResponseEntity<>(loggedUser, HttpStatus.OK);
-			}
-			else{
-				log.info("Not user logged");
-				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-				
-			}	
+			log.info("Not user logged");
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+					
 		} else {
 			User loggedUser = userComponent.getLoggedUser();
 			log.info("Logged as {}", loggedUser.getName());
@@ -95,6 +84,30 @@ public class LoginController {
 		}
 		return u;
 
+	}
+
+	@RequestMapping("/api-googleLogIn")
+	public ResponseEntity<User> googleLogIn(@RegisteredOAuth2AuthorizedClient("google") OAuth2AuthorizedClient authorizedClient) {
+		
+		log.info("Logging in ...");
+
+		if (!userComponent.isLoggedUser()) {
+			if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString().equals("anonymousUser")){
+				DefaultOAuth2User p = (DefaultOAuth2User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+				User u = googleToUser(p);
+				userComponent.setLoggedUser(u);
+				userComponent.setAuthorizedClient(authorizedClient);
+				User loggedUser = userComponent.getLoggedUser();
+				log.info("Logged as {}", loggedUser.getName());
+				return new ResponseEntity<>(loggedUser, HttpStatus.OK);
+			}
+			else{
+				log.info("Not user logged");
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+				
+			}	
+		}
+		else return new ResponseEntity<>(HttpStatus.CONTINUE);
 	}
 
 

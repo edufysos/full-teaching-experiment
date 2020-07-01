@@ -18,6 +18,7 @@ import {
   CalendarEvent,
   CalendarEventAction
 } from 'angular-calendar';
+import { CalendarService } from '../../services/calendar.service';
 
 const colors: any = {
   red: {
@@ -59,7 +60,16 @@ export class CalendarComponent implements OnInit {
 
   loadingSessions: boolean = true;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+  synced: boolean = false;
+
+  syncText: string = "Sync your calendar to google agenda"
+
+
+
+  constructor(
+    private authenticationService: AuthenticationService, 
+    private router: Router,
+    private calendarService: CalendarService) { }
 
   ngOnInit() {
     this.getAllSessions();
@@ -134,6 +144,21 @@ export class CalendarComponent implements OnInit {
           }
       }
       this.loadingSessions = false;
+  }
+
+  syncCalendar(){
+    let sessions = [];
+    
+    this.events.forEach(event => {
+      let aux = event.session;
+      aux.course = null;
+      sessions.push(aux);
+    });
+
+    this.calendarService.sync(sessions).subscribe();
+
+    this.synced = true
+    this.syncText = "Your calendar is already synced"
   }
 
 }
